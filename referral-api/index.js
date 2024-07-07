@@ -2,17 +2,12 @@ const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 const validator = require("validator");
 const nodemailer = require("nodemailer");
-const cors = require("cors"); // Import the CORS package
+const cors = require("cors");
 
 const app = express();
 const prisma = new PrismaClient();
 
-// Enable CORS for frontend server
-app.use(
-  cors({
-    origin: "http://localhost:3000", // Replace with your frontend URL
-  })
-);
+app.use(cors());
 
 
 app.use(express.json());
@@ -53,7 +48,7 @@ app.post("/api/referrals", async (req, res) => {
       service: "gmail",
       auth: {
         user: "manishgodhani.tp@gmail.com",
-        pass: "qmok psbn tlmc qcpk", // Make sure to use environment variables or a secure method to store sensitive information
+        pass: "qmok psbn tlmc qcpk",
       },
     });
 
